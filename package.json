@@ -1,0 +1,14 @@
+{
+  "name": "db9d955c8244ba07",
+  "main": "db9d955c8244ba07@216.js",
+  "version": "216.0.0",
+  "homepage": "https://observablehq.com/d/db9d955c8244ba07",
+  "author": {
+    "name": "shriya's workspace",
+    "url": "https://observablehq.com/@shriyas-workspace"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4 - 5"
+  }
+}
