@@ -1,0 +1,48 @@
+state,black_maternal_deaths,overall_rank,reproductive_care_rank,racial_equity_rank,political_lean,medicaid_expanded,black_female_pop_15_49,black_mortality_rate_per_100k
+Alabama,57.0,42,43,36,Republican,0,345778.0,2.35
+Alaska,0.0,39,48,40,Republican,1,6007.0,0.0
+Arizona,12.0,34,43,30,Democrat,1,101294.0,1.69
+Arkansas,21.0,47,46,43,Republican,1,119265.0,2.52
+California,55.0,14,12,6,Democrat,1,613618.0,1.28
+Colorado,0.0,18,22,19,Democrat,1,65726.0,0.0
+Connecticut,14.0,6,5,8,Democrat,1,119499.0,1.67
+Delaware,0.0,25,29,16,Democrat,1,59355.0,0.0
+District of Columbia,16.0,11,19,3,,1,77940.0,2.93
+Florida,118.0,36,35,18,Republican,0,946164.0,1.78
+Georgia,150.0,45,45,32,Democrat,0,946804.0,2.26
+Idaho,0.0,23,22,22,Republican,1,4538.0,0.0
+Illinois,61.0,23,14,17,Democrat,1,461997.0,1.89
+Indiana,25.0,34,32,34,Republican,1,177512.0,2.01
+Iowa,0.0,15,6,25,Republican,1,34518.0,0.0
+Kansas,11.0,30,27,39,Republican,0,42383.0,3.71
+Kentucky,10.0,40,35,26,Republican,1,93632.0,1.53
+Louisiana,66.0,43,38,31,Republican,1,374625.0,2.52
+Maine,0.0,16,4,—,Democrat,1,6677.0,0.0
+Maryland,49.0,8,17,7,Democrat,1,479164.0,1.46
+Massachusetts,15.0,1,1,1,Democrat,1,168381.0,1.27
+Michigan,40.0,27,26,20,Democrat,1,346694.0,1.65
+Minnesota,10.0,11,13,23,Democrat,1,110886.0,1.29
+Mississippi,56.0,51,50,49,Republican,0,282074.0,2.84
+Missouri,34.0,38,34,28,Republican,1,181892.0,2.67
+Nebraska,0.0,21,24,32,Republican,1,25438.0,0.0
+Nevada,0.0,41,37,35,Democrat,1,85488.0,0.0
+New Hampshire,0.0,3,3,5,Democrat,1,6519.0,0.0
+New Jersey,56.0,17,21,13,Democrat,1,351978.0,2.27
+New York,102.0,9,10,11,Democrat,1,866792.0,1.68
+North Carolina,102.0,33,41,24,Republican,1,590246.0,2.47
+North Dakota,0.0,28,17,43,Republican,1,7136.0,0.0
+Ohio,55.0,31,31,21,Republican,1,382296.0,2.06
+Oklahoma,15.0,49,47,42,Republican,1,77270.0,2.77
+Oregon,0.0,13,9,15,Democrat,1,23976.0,0.0
+Pennsylvania,42.0,9,16,10,Democrat,1,392364.0,1.53
+Rhode Island,0.0,4,2,4,Democrat,1,25354.0,0.0
+South Carolina,51.0,37,42,46,Republican,0,341068.0,2.14
+South Dakota,0.0,29,20,40,Republican,1,5109.0,0.0
+Tennessee,67.0,46,40,47,Republican,0,299969.0,3.19
+Texas,141.0,48,49,38,Republican,0,1049222.0,1.92
+Utah,0.0,19,27,28,Republican,1,12602.0,0.0
+Virginia,70.0,20,30,8,Democrat,1,421305.0,2.37
+Washington,0.0,7,15,14,Democrat,1,85290.0,0.0
+West Virginia,0.0,49,38,45,Republican,1,14072.0,0.0
+Wisconsin,15.0,21,8,37,Democrat,0,99716.0,2.15
+Wyoming,0.0,43,33,48,Republican,0,1490.0,0.0

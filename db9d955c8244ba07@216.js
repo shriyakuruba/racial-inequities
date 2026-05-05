@@ -1,8 +1,8 @@
 function _1(md){return(
-md`# No One Saves Her
-### Black women are failed at every level — by their income, their state, and their doctors.
+md`# Built for Someone Else
+### Her income does not save her. Her state does not save her. Her doctor does not save her.
 
-Use the controls below each chart to investigate. Try to find a combination of factors that closes the gap. You won't be able to.
+Use the controls below each chart to investigate.
 
 *Data: CDC Wonder 2018–2024 · Commonwealth Fund 2023 · MIT Election Lab · U.S. Census ACS 2023*`
 )}
@@ -42,7 +42,7 @@ function _COLORS(){return(
 )}
 
 function _7(md){return(
-md`Black women earn a median household income of **$56,490** — placing most in the highest-risk zone. But even Black women at the top of the income scale face mortality rates that no other group experiences at any income level. Adjust the highlight below to explore.`
+md`A Black woman earning six figures is still more likely to die in childbirth than a white woman living in poverty. Highlight a group below and look at where it sits on the chart.`
 )}
 
 function _panel1Controls(html)
@@ -65,7 +65,7 @@ function _panel1Controls(html)
     <div>
       <div style="font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Median markers</div>
       <label style="display:flex;align-items:center;gap:10px;cursor:pointer">
-        <div style="position:relative;width:42px;height:24px">
+        <div style="position:relative;width:42px;height:24px;overflow:hidden;border-radius:24px;clip-path:inset(0)">
           <input type="checkbox" id="median-toggle" checked style="opacity:0;width:0;height:0;position:absolute">
           <div id="toggle-track" style="
             position:absolute;top:0;left:0;right:0;bottom:0;
@@ -265,8 +265,8 @@ function _10(panel1Controls,d3,sketch1,COLORS,invalidation)
         .attr("stroke", COLORS[d.race] || "#aaa")
         .attr("stroke-width", 1)
         .attr("stroke-dasharray","4 3")
-        .attr("opacity", isHL ? 0.6 : 0.5)
-
+        .attr("opacity", isHL ? 0.6 : 0)
+        .style("pointer-events", isHL ? "all" : "none")
       if (isShortLine) {
         g.append("text")
           .attr("x", xScale(d.median_income_2023) + 4)
@@ -274,7 +274,7 @@ function _10(panel1Controls,d3,sketch1,COLORS,invalidation)
           .attr("text-anchor","start")
           .style("font-size","9px")
           .style("fill", COLORS[d.race] || "#aaa")
-          .style("opacity", isHL ? 0.8 : 0.75)
+          .style("opacity", isHL ? 0.8 : 0)
           .text("median")
       } else {
         g.append("text")
@@ -282,7 +282,7 @@ function _10(panel1Controls,d3,sketch1,COLORS,invalidation)
           .attr("text-anchor","start")
           .style("font-size","9px")
           .style("fill", COLORS[d.race] || "#aaa")
-          .style("opacity", isHL ? 0.8 : 0.75)
+          .style("opacity", isHL ? 0.8 : 0)
           .text("median")
       }
     })
@@ -312,7 +312,8 @@ function _10(panel1Controls,d3,sketch1,COLORS,invalidation)
       .attr("cy", yScale(d.mortality_rate_per_100k))
       .attr("r", isBlack ? 13 : 10)
       .attr("fill", COLORS[d.race] || "#aaa")
-      .attr("opacity", isHL ? 0.9 : 0.75)
+      .attr("opacity", isHL ? 0.9 : 0)
+      .style("pointer-events", isHL ? "all" : "none")
       .attr("stroke", isBlack ? "#fff" : "none")
       .attr("stroke-width", 2)
       .style("cursor","pointer")
@@ -344,7 +345,7 @@ function _10(panel1Controls,d3,sketch1,COLORS,invalidation)
       .on("mouseout", function() {
         d3.select(this)
           .attr("r", isBlack ? 13 : 10)
-          .attr("opacity", isHL ? 0.9 : 0.75)
+          .attr("opacity", isHL ? 0.9 : 0)
           .attr("stroke", isBlack ? "#fff" : "none")
           .attr("stroke-width", 2)
         tip.style("opacity", 0)
@@ -357,7 +358,7 @@ function _10(panel1Controls,d3,sketch1,COLORS,invalidation)
       .style("font-size", isBlack ? "12px" : "11px")
       .style("font-weight", isBlack ? "700" : "400")
       .style("fill", COLORS[d.race] || "#aaa")
-      .style("opacity", isHL ? 1 : 0.75)
+      .style("opacity", isHL ? 1 : 0)
       .text(`${d.race}  ${d.mortality_rate_per_100k}`)
   })
 
@@ -370,7 +371,7 @@ function _10(panel1Controls,d3,sketch1,COLORS,invalidation)
     const bx = xScale(black.median_income_2023) - 36
     const by = yScale(black.mortality_rate_per_100k)
     const wy = yScale(white.mortality_rate_per_100k)
-    const bracketOpacity = (panel1Controls.highlightRace === "All" || panel1Controls.highlightRace === "Black") ? 0.8 : 0.75
+    const bracketOpacity = (panel1Controls.highlightRace === "All" ? 0.8 : 0)
 
     g.append("line").attr("x1",bx).attr("x2",bx).attr("y1",by).attr("y2",wy)
       .attr("stroke","#D85A30").attr("stroke-width",1.5).attr("opacity",bracketOpacity)
@@ -433,12 +434,11 @@ htl.html`<div style="display:flex;gap:12px;align-items:center;margin:32px 0 8px;
 
 function _12(md){return(
 md`
----
+----
 
-## Layer 2 — A better state doesn't save her.
+## Layer 2 — A better state does not save her.
 
-States ranked highest for overall healthcare — Connecticut, Massachusetts, New York — still post some of the highest Black maternal mortality rates in the country. Filter by politics or Medicaid expansion below. No combination closes the gap for Black mothers.
-
+Connecticut, Massachusetts, and New York rank among the best healthcare systems in the country. They are also among the worst places to be a Black mother. Filter by political lean, Medicaid expansion, or ranking type below and see what changes.
 `
 )}
 
@@ -547,8 +547,8 @@ function _15(panel2Controls,sketch2_filtered,d3,COLORS,invalidation)
 {
   const _ = panel2Controls
   const __ = sketch2_filtered
-  const W = 700, H = 440
-  const m = {top: 52, right: 40, bottom: 68, left: 72}
+  const W = 700, H = 500
+  const m = {top: 52, right: 20, bottom: 140, left: 72}
   const iW = W - m.left - m.right
   const iH = H - m.top - m.bottom
   
@@ -674,35 +674,38 @@ function _15(panel2Controls,sketch2_filtered,d3,COLORS,invalidation)
         .text(d.state)
     })
 
-  // Legend
+  // Legend — placed below chart
+  const legY = iH + m.top + 52
   const leg = svg.append("g")
-  .attr("transform",`translate(${W - 0},${m.top - 40})`)
+    .attr("transform", `translate(${m.left}, ${legY})`)
 
-  ;[["Democrat", COLORS.Democrat],["Republican", COLORS.Republican]].forEach(([label, color], i) => {
-    leg.append("circle").attr("cx",8).attr("cy", i*20+8).attr("r",7)
-      .attr("fill",color).attr("opacity",0.75)
-    leg.append("text").attr("x",20).attr("y", i*20+12)
-      .style("font-size","11px").style("fill","#333").text(label)
-    leg.append("circle").attr("cx",8).attr("cy",48).attr("r",7)
-      .attr("fill","#aaa").attr("opacity",0.75)
-    leg.append("text").attr("x",20).attr("y",52)
-      .style("font-size","11px").style("fill","#333").text("DC / other")
-    leg.append("circle").attr("cx",8).attr("cy",70).attr("r",6)
-      .attr("fill","#F5C842").attr("opacity",0.4)
-    leg.append("text").attr("x",20).attr("y",74)
-      .style("font-size","11px").style("fill","#999")
-      .text("Suppressed (<10 deaths)")
+  const legItems = [
+    { label: "Democrat", color: COLORS.Democrat, r: 7, opacity: 0.75 },
+    { label: "Republican", color: COLORS.Republican, r: 7, opacity: 0.75 },
+    { label: "DC / other", color: "#aaa", r: 7, opacity: 0.75 },
+    { label: "Suppressed (<10)", color: "#F5C842", r: 6, opacity: 0.6 },
+    { label: "Medicaid expanded", color: "#999", r: 8, opacity: 0.75 },
+    { label: "Not expanded", color: "#999", r: 4, opacity: 0.75 },
+  ]
+
+  const colW = 160
+  legItems.forEach((item, i) => {
+    const col = i % 4
+    const row = Math.floor(i / 4)
+    const lx = col * colW
+    const ly = row * 24
+
+    leg.append("circle")
+      .attr("cx", lx + 7).attr("cy", ly + 7)
+      .attr("r", item.r)
+      .attr("fill", item.color)
+      .attr("opacity", item.opacity)
+
+    leg.append("text")
+      .attr("x", lx + 20).attr("y", ly + 12)
+      .style("font-size", "11px").style("fill", "#333")
+      .text(item.label)
   })
-
-  leg.append("circle").attr("cx",8).attr("cy",112).attr("r",8)
-    .attr("fill","#999").attr("opacity",0.75)
-  leg.append("text").attr("x",20).attr("y",116)
-    .style("font-size","11px").style("fill","#333").text("Medicaid expanded")
-
-  leg.append("circle").attr("cx",8).attr("cy",132).attr("r",5)
-    .attr("fill","#999").attr("opacity",0.75)
-  leg.append("text").attr("x",20).attr("y",136)
-    .style("font-size","11px").style("fill","#333").text("Not expanded")
 
   // Cleanup tooltip on cell invalidation
   invalidation.then(() => tip.remove())
@@ -722,11 +725,13 @@ htl.html`<div style="display:flex;gap:12px;align-items:center;margin:32px 0 8px;
 )}
 
 function _17(md){return(
-md`---
+md`
+---
 
-## Layer 3 — More care doesn't save her.
+## Layer 3 — More care does not save her.
 
-Black women receive fewer prenatal visits than white women at every education level. And the visits they do receive are not preventing the most common causes of Black maternal death — hemorrhage and hypertension, both highly treatable. Use the toggles to show or hide race lines.`
+For white women, more education means more prenatal visits. For Black women, that relationship breaks down. A Black woman with a doctoral degree receives fewer prenatal visits than a white woman who never finished high school. Toggle the race lines below and watch how the Black line behaves compared to the others.
+`
 )}
 
 function _panel3Controls(html)
@@ -914,7 +919,7 @@ function _19(panel3Controls,d3,prenatal,COLORS,invalidation)
     const color = COLORS[race] || "#aaa"
     const isBlack = race === "Black"
     const isVisible = panel3Controls.visibleRaces.includes(race)
-    const opacity = isVisible ? (isBlack? 1: 0.75) : 0.5
+    const opacity = isVisible ? (isBlack? 1: 0.75) : 0
 
     // Line path
     g.append("path")
@@ -923,6 +928,7 @@ function _19(panel3Controls,d3,prenatal,COLORS,invalidation)
       .attr("stroke", color)
       .attr("stroke-width", isBlack ? 3.5: 2)
       .attr("opacity", opacity)
+      .style("display", isVisible ? "block" : "none")
       .attr("d", line)
 
     // Dots with tooltip
@@ -935,6 +941,7 @@ function _19(panel3Controls,d3,prenatal,COLORS,invalidation)
       .attr("fill", color)
       .attr("opacity", opacity)
       .style("cursor", "pointer")
+      .style("display", isVisible ? "block" : "none")
       .on("mouseover", function(event, d) {
         d3.select(this).attr("r", 9).attr("opacity",1)
         tip.style("opacity",1)
@@ -959,7 +966,7 @@ function _19(panel3Controls,d3,prenatal,COLORS,invalidation)
       .style("font-size","11px")
       .style("font-weight", isBlack ? "700" : "400")
       .style("fill", color)
-      .style("opacity", isVisible ? 1 : 0.75)
+      .style("opacity", isVisible ? 1 : 0)
       .text(race)
   })
 
@@ -1007,16 +1014,15 @@ md`
 
 ## So what?
 
-Three controls. Three attempts to explain away the gap. None of them work.
+Income did not close it. State quality did not close it. Medicaid expansion did not close it. Education did not close it. Prenatal care did not close it.
 
-Filtering to high-income Black women — the gap persists. Filtering to states that expanded Medicaid, states with top-ranked healthcare, Democrat-voting states — the gap persists. Giving Black women more education and more prenatal care — the gap persists.
+**This is not a resource problem. It is a design problem.** The American healthcare system was built around a default patient. That patient is not a Black woman. Giving Black women more access to a system that was not built for them does not protect them. It gives them more contact with something that is already failing them.
 
-**This is not a resource problem. It is a systemic one.** The healthcare system was built around a patient who is not Black and not a woman. More of that system does not fix it.
-
-*70% of Black maternal deaths are from hemorrhage or hypertension — both preventable with attentive care. The care exists. It is not being delivered equally.*
+*Seven in ten Black maternal deaths are caused by hemorrhage or hypertension. Both are preventable. The tools to catch and treat them exist. The gap is in who they reach.*
 
 ---
-**Data sources:** CDC Wonder Underlying Cause of Death 2018–2024 (ICD-10 O00–O99) · CDC Natality 2016–2024 · Commonwealth Fund 2023 State Health System Performance · MIT Election Data Lab 2020 Presidential Returns · KFF Medicaid Expansion Status September 2025 · U.S. Census Bureau ACS 2023 Median Household Income by Race · Census Bureau State Population Estimates 2020–2024`
+**Data sources:** CDC Wonder Underlying Cause of Death 2018–2024 (ICD-10 O00–O99) · CDC Natality 2016–2024 · Commonwealth Fund 2023 State Health System Performance · MIT Election Data Lab 2020 Presidential Returns · KFF Medicaid Expansion Status September 2025 · U.S. Census Bureau ACS 2023 Median Household Income by Race · Census Bureau State Population Estimates 2020–2024
+`
 )}
 
 function _21(d3)
@@ -1207,6 +1213,5 @@ export default function define(runtime, observer) {
   main.variable(observer("panel3Controls")).define("panel3Controls", ["Generators", "viewof panel3Controls"], (G, _) => G.input(_));
   main.variable(observer()).define(["panel3Controls","d3","prenatal","COLORS","invalidation"], _19);
   main.variable(observer()).define(["md"], _20);
-  main.variable(observer()).define(["d3"], _21);
-  return main;
+  main.variable(observer("closingChart")).define(["d3"], _21);  return main;
 }

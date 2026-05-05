@@ -1,14 +1,44 @@
 <!DOCTYPE html>
+<html lang="en">
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>No One Saves Her</title>
 <link rel="stylesheet" type="text/css" href="./inspector.css">
+<link rel="stylesheet" href="./style.css">
 <body>
 <script type="module">
-
 import define from "./index.js";
-import {Runtime, Library, Inspector} from "./runtime.js";
+import {Runtime, Inspector} from "./runtime.js";
 
 const runtime = new Runtime();
-const main = runtime.module(define, Inspector.into(document.body));
+let renderCount = 0;
+const totalCells = 14; // total visible cells we want to render
 
+const main = runtime.module(define, name => {
+  const skip = ["d3", "sketch1", "sketch2", "prenatal", "COLORS",
+                "sketch2_filtered", "panel1Controls", "panel2Controls",
+                "panel3Controls", "highlightRace", "showMedians",
+                "politicalFilter", "medicaidFilter", "rankType", "visibleRaces"]
+  if (skip.includes(name)) return null
+
+  const div = document.createElement("div")
+  document.body.appendChild(div)
+  const inspector = new Inspector(div)
+
+  const orig = inspector.fulfilled.bind(inspector)
+  inspector.fulfilled = function(value) {
+    if (value == null) {
+      div.style.display = "none"
+      return
+    }
+    orig(value)
+    // After rendering, remove any inspector pre/code elements (the gray dot)
+    setTimeout(() => {
+      div.querySelectorAll(".observablehq--inspect").forEach(el => el.remove())
+      div.querySelectorAll("pre").forEach(el => el.remove())
+    }, 100)
+  }
+  return inspector
+});
 </script>
+</html>

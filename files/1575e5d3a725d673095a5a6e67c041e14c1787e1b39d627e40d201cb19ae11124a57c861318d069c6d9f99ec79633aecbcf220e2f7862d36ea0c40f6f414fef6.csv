@@ -1,0 +1,41 @@
+race,edu_short,edu_order,total_births,avg_prenatal_visits
+Asian,No HS,0,32133.0,7.917999999999999
+Asian,Some HS,1,54511.0,7.874
+Asian,HS Grad,2,178552.0,8.013
+Asian,Some College,3,140557.0,8.067
+Asian,Associate,4,88947.0,8.357
+Asian,Bachelor's,5,521756.0,8.284
+Asian,Master's,6,349835.0,8.509
+Asian,Doctorate,7,134340.0,9.13888888888889
+Black,No HS,0,70514.0,7.548
+Black,Some HS,1,375044.0,7.261
+Black,HS Grad,2,1323439.0,7.578
+Black,Some College,3,840107.0,7.959999999999999
+Black,Associate,4,289872.0,8.162
+Black,Bachelor's,5,443910.0,8.212
+Black,Master's,6,198746.0,8.357
+Black,Doctorate,7,44657.0,8.296
+Native American,No HS,0,7708.0,7.215999999999999
+Native American,Some HS,1,36367.0,6.843999999999999
+Native American,HS Grad,2,77053.0,7.293000000000001
+Native American,Some College,3,48307.0,7.563
+Native American,Associate,4,15534.0,7.859999999999999
+Native American,Bachelor's,5,16172.0,8.197
+Native American,Master's,6,5246.0,8.236
+Native American,Doctorate,7,1289.0,8.936666666666666
+Pacific Islander,No HS,0,5077.0,7.015000000000001
+Pacific Islander,Some HS,1,13849.0,6.767
+Pacific Islander,HS Grad,2,29467.0,7.2909999999999995
+Pacific Islander,Some College,3,15179.0,7.489
+Pacific Islander,Associate,4,4883.0,8.293333333333333
+Pacific Islander,Bachelor's,5,5795.0,10.181999999999999
+Pacific Islander,Master's,6,1510.0,8.817777777777778
+Pacific Islander,Doctorate,7,316.0,8.44888888888889
+White,No HS,0,580454.0,7.401999999999999
+White,Some HS,1,1371843.0,7.6739999999999995
+White,HS Grad,2,4321702.0,8.001999999999999
+White,Some College,3,3080577.0,8.270999999999999
+White,Associate,4,1505771.0,8.369
+White,Bachelor's,5,4039596.0,8.562000000000001
+White,Master's,6,1842308.0,8.702
+White,Doctorate,7,528201.0,8.493
